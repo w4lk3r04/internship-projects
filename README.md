@@ -62,6 +62,36 @@ This laboratory is designed to:
 4.  **Map** the exploited techniques using the **MITRE ATT&CK** matrix (e.g., T1059.004 for command execution via PHP, T1078 for valid accounts).
 5.  **Develop and test** defensive measures.
 
+## ATT&CK mapping MVP
+
+The repository includes a first, evidence-preserving ATT&CK mapper for UTF-8
+text and Markdown Red Team reports. It maps the techniques exercised by the lab
+and keeps the source line for every recommendation:
+
+```bash
+python -m attack_mapper.cli path/to/report.txt
+```
+
+To export the threat intelligence matrix as Markdown:
+
+```bash
+python -m attack_mapper.cli path/to/report.txt \
+  --markdown-output threat_intelligence_matrix.md
+```
+
+For a local test interface that accepts pasted reports or text/Markdown files:
+
+```bash
+python -m attack_mapper.web
+```
+
+Then open `http://127.0.0.1:8000`. Reports are processed in memory and are not
+stored by the MVP.
+
+The MVP is intentionally rule-based. It provides the validation baseline for
+the next iterations: PDF ingestion, the official versioned ATT&CK STIX catalog,
+semantic retrieval, and analyst review of low-confidence recommendations.
+
 ## 🤝 Contribution and License
 
 This project is developed as part of an internship and is open for learning purposes.
